@@ -1,7 +1,7 @@
 PORTAFOLIO PROFESIONAL 2026
 
 1. Abre index.html con Chrome o Edge.
-2. Para mostrar tu fotografía: guarda tu imagen como assets/mi-foto.webp (preferiblemente con fondo transparente).
+2. Para mostrar tu fotografía: guarda tu imagen como mi-foto.webp.jpeg en la raíz del proyecto (preferiblemente con fondo transparente).
 3. En script.js edita CONTACTO.email y CONTACTO.whatsapp.
 4. Cambia los textos de ejemplo de index.html por tu experiencia real.
 5. Las tarjetas de proyectos son demostraciones, no proyectos profesionales verificados.
