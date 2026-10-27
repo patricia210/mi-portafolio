@@ -1,5 +1,15 @@
 // EDITA ESTOS DATOS ANTES DE PUBLICAR
-const CONTACTO = { email: 'patigil951@gmail.com', whatsapp: '584245319486' }; // WhatsApp: código país + número, sin + ni espacios
+const CONTACTO = {
+  email: 'patigil951@gmail.com',
+  whatsapp: '584245319486', // código país + número, sin + ni espacios
+  linkedin: '',  // URL completa del perfil, p. ej. 'https://www.linkedin.com/in/usuario' (vacío = se oculta el botón)
+  cv: '',        // nombre del PDF guardado en el proyecto, p. ej. 'cv-angela.pdf' (vacío = se oculta el botón)
+  formspree: ''  // ID del formulario creado en formspree.io, p. ej. 'xqkrabcd' (vacío = el formulario abre la app de correo)
+};
+// Certificaciones: se muestran en "Perfil" solo si hay al menos una. El enlace es la verificación oficial (p. ej. Credly).
+const CERTIFICACIONES = [
+  // { nombre: 'SAP Certified Associate - Implementation Consultant - SAP SuccessFactors Employee Central', emisor: 'SAP', anio: 2026, enlace: 'https://www.credly.com/badges/...' },
+];
 
 const $ = (selector) => document.querySelector(selector);
 const body = document.body;
@@ -24,11 +34,65 @@ if (matchMedia('(hover:hover) and (pointer:fine)').matches && !reducedMotion.mat
 document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b===button));document.querySelectorAll('.project-card').forEach(card=>{card.hidden=button.dataset.filter!=='todos'&&card.dataset.category!==button.dataset.filter;});}));
 const portrait=$('#portrait'),placeholder=$('#photoPlaceholder');portrait.addEventListener('load',()=>{portrait.style.display='block';placeholder.style.display='none';});portrait.addEventListener('error',()=>{portrait.style.display='none';placeholder.style.display='flex';});if(portrait.complete&&portrait.naturalWidth){portrait.style.display='block';placeholder.style.display='none';}
 $('#year').textContent=new Date().getFullYear();
-$('#emailLink').href=`mailto:${CONTACTO.email}?subject=${encodeURIComponent('Consulta desde mi portafolio')}`;
-const wa=$('#waLink');if(CONTACTO.whatsapp){wa.href=`https://wa.me/${CONTACTO.whatsapp}?text=${encodeURIComponent('Hola, vi tu portafolio y quisiera consultar sobre tus servicios.')}`;wa.target='_blank';wa.rel='noopener noreferrer';wa.removeAttribute('aria-label');}else{wa.addEventListener('click',e=>{e.preventDefault();alert('Configura tu número de WhatsApp en script.js para activar este botón.');});}
+const wa=$('#waLink');if(CONTACTO.whatsapp){wa.target='_blank';wa.rel='noopener noreferrer';}else wa.hidden=true;
+document.querySelectorAll('.linkedin-link').forEach(a=>{if(CONTACTO.linkedin){a.href=CONTACTO.linkedin;a.hidden=false;}});
+document.querySelectorAll('.cv-link').forEach(a=>{if(CONTACTO.cv){a.href=CONTACTO.cv;a.hidden=false;}});
+
+// IDIOMA (español / inglés). El español sale del HTML y el inglés de i18n.js
+const ES = {};
+document.querySelectorAll('[data-i18n]').forEach(el => { ES[el.dataset.i18n] ??= el.innerHTML; });
+const langBtn = $('#langToggle');
+let lang = (() => { try { return localStorage.getItem('portfolio-lang'); } catch { return null; } })() || (navigator.language.startsWith('en') ? 'en' : 'es');
+const t = clave => UI[lang][clave];
+function renderCertificaciones(){
+  const grid = $('#certGrid');
+  if (!CERTIFICACIONES.length) return;
+  $('#certificaciones').hidden = false;
+  grid.replaceChildren(...CERTIFICACIONES.map(c => {
+    const card = document.createElement('div'); card.className = 'glass cert-card';
+    const icono = document.createElement('span'); icono.className = 'cert-icon'; icono.textContent = '✓';
+    const nombre = document.createElement('strong'); nombre.textContent = c.nombre;
+    const meta = document.createElement('small'); meta.textContent = [c.emisor, c.anio].filter(Boolean).join(' · ');
+    card.append(icono, nombre, meta);
+    if (c.enlace) { const a = document.createElement('a'); a.className = 'card-link'; a.href = c.enlace; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = t('verificar'); card.append(a); }
+    return card;
+  }));
+}
+function aplicarIdioma(){
+  document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.dataset.i18n; el.innerHTML = lang === 'en' ? (EN[k] ?? ES[k]) : ES[k]; });
+  document.documentElement.lang = lang;
+  document.title = t('titulo');
+  langBtn.textContent = t('idioma'); langBtn.title = t('idiomaTitle'); langBtn.setAttribute('aria-label', t('idiomaLabel'));
+  if (CONTACTO.whatsapp) wa.href = `https://wa.me/${CONTACTO.whatsapp}?text=${encodeURIComponent(t('whatsapp'))}`;
+  renderCertificaciones();
+  $('#formStatus').textContent = '';
+}
+langBtn.addEventListener('click', () => { lang = lang === 'es' ? 'en' : 'es'; try { localStorage.setItem('portfolio-lang', lang); } catch {} aplicarIdioma(); });
+aplicarIdioma();
+
+// FORMULARIO DE CONTACTO: envía con Formspree si está configurado; si no, abre la app de correo
+const form = $('#contactForm'), formStatus = $('#formStatus');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  if (form._gotcha.value) return; // spam
+  const nombre = form.nombre.value.trim(), correo = form.correo.value.trim(), mensaje = form.mensaje.value.trim();
+  if (!nombre || !mensaje || !form.correo.checkValidity() || !correo) { formStatus.textContent = t('faltan'); formStatus.dataset.tipo = 'error'; return; }
+  if (!CONTACTO.formspree) {
+    location.href = `mailto:${CONTACTO.email}?subject=${encodeURIComponent(t('asunto'))}&body=${encodeURIComponent(`${mensaje}\n\n— ${nombre} (${correo})`)}`;
+    formStatus.textContent = t('abriendoCorreo'); formStatus.dataset.tipo = 'ok'; return;
+  }
+  const boton = form.querySelector('button[type="submit"]'); boton.disabled = true;
+  formStatus.textContent = t('enviando'); formStatus.dataset.tipo = '';
+  try {
+    const r = await fetch(`https://formspree.io/f/${CONTACTO.formspree}`, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+    if (!r.ok) throw new Error(r.status);
+    form.reset(); formStatus.textContent = t('enviado'); formStatus.dataset.tipo = 'ok';
+  } catch { formStatus.textContent = t('error'); formStatus.dataset.tipo = 'error'; }
+  finally { boton.disabled = false; }
+});
 
 // MIRADA QUE SIGUE AL CURSOR
-// Coordenadas en píxeles de mi-foto.webp.jpeg (853×1280). Si cambias la foto, ajusta estos valores.
+// Coordenadas en píxeles de angela.jpg (853×1280). Si cambias la foto, ajusta estos valores.
 // iris: centro (x, y) y radio r · esquinas: a (exterior/interior) y b · arriba/abajo: control de los párpados
 // sclera: columnas donde se toma el color del blanco del ojo
 const OJOS = [

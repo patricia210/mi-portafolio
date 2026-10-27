@@ -1,11 +1,24 @@
-PORTAFOLIO PROFESIONAL 2026
+PORTAFOLIO PROFESIONAL 2026 · AngelaSAP
 
-1. Abre index.html con Chrome o Edge.
-2. Para mostrar tu fotografía: guarda tu imagen como mi-foto.webp.jpeg en la raíz del proyecto (preferiblemente con fondo transparente).
-3. En script.js edita CONTACTO.email y CONTACTO.whatsapp.
-4. Cambia los textos de ejemplo de index.html por tu experiencia real.
-5. Las tarjetas de proyectos son demostraciones, no proyectos profesionales verificados.
-6. Los cursos están marcados como PRÓXIMAMENTE y no tienen plataforma de pago ni inscripciones activas.
-7. Si quieres ofrecer un CV descargable, agrega tu PDF a assets y crea un enlace en el HTML.
+Para verlo en tu computadora con todas las funciones (incluidos los ojos que siguen al cursor):
+  python3 -m http.server 8765
+y abre http://localhost:8765/ en el navegador.
 
-Todo funciona sin instalar librerías. No se han añadido fotografías personales ni datos de contacto reales.
+QUÉ EDITAR (todo está al inicio de script.js):
+1. CONTACTO.email y CONTACTO.whatsapp: ya configurados.
+2. CONTACTO.linkedin: pega la URL de tu perfil de LinkedIn para mostrar los botones de LinkedIn.
+3. CONTACTO.cv: guarda tu CV en PDF en esta carpeta (por ejemplo cv-angela.pdf) y escribe su nombre.
+4. CONTACTO.formspree: crea una cuenta gratuita en formspree.io, crea un formulario y pega aquí su ID.
+   Mientras esté vacío, el formulario abre la aplicación de correo del visitante con el mensaje listo.
+5. CERTIFICACIONES: agrega cada certificación con su enlace de verificación oficial (por ejemplo Credly).
+   La sección aparece sola cuando hay al menos una.
+
+OTROS ARCHIVOS:
+- angela.jpg: la foto del inicio. Si la cambias, ajusta las coordenadas de OJOS en script.js.
+- i18n.js: textos en inglés. Si cambias un texto en index.html, actualiza también su traducción.
+- tema-empresarial.css: el diseño corporativo. Si lo quitas de index.html vuelve el diseño original.
+- index.html: en la sección Proyectos hay una plantilla comentada (reto / solución / resultado)
+  para agregar proyectos reales. Las tarjetas actuales son demostraciones.
+- Los cursos están marcados como PRÓXIMAMENTE y no tienen inscripciones activas.
+
+Todo funciona sin instalar librerías.
