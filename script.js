@@ -32,6 +32,16 @@ if ('IntersectionObserver' in window){ const observer = new IntersectionObserver
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 if (matchMedia('(hover:hover) and (pointer:fine)').matches && !reducedMotion.matches) document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(900px) rotateY(${x*5}deg) rotateX(${-y*5}deg)`;});card.addEventListener('pointerleave',()=>card.style.transform='');});
 document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b===button));document.querySelectorAll('.project-card').forEach(card=>{card.hidden=button.dataset.filter!=='todos'&&card.dataset.category!==button.dataset.filter;});}));
+// CARRUSEL DE TECNOLOGÍAS: se duplica para que el bucle sea continuo y cada tecnología resalta su servicio
+const techTrack = $('#techTrack');
+[...techTrack.children].forEach(item => { const copia = item.cloneNode(true); copia.classList.add('tech-clone'); copia.setAttribute('aria-hidden', 'true'); copia.tabIndex = -1; techTrack.append(copia); });
+const ajustarVelocidad = () => techTrack.style.setProperty('--dur', `${Math.round(techTrack.scrollWidth / 2 / 40)}s`); // ~40 px por segundo
+ajustarVelocidad(); addEventListener('resize', ajustarVelocidad);
+techTrack.addEventListener('click', e => {
+  const enlace = e.target.closest('.tech'); if (!enlace) return;
+  const servicio = $(enlace.getAttribute('href')); if (!servicio) return;
+  servicio.classList.remove('destacado'); void servicio.offsetWidth; servicio.classList.add('destacado');
+});
 const portrait=$('#portrait'),placeholder=$('#photoPlaceholder');portrait.addEventListener('load',()=>{portrait.style.display='block';placeholder.style.display='none';});portrait.addEventListener('error',()=>{portrait.style.display='none';placeholder.style.display='flex';});if(portrait.complete&&portrait.naturalWidth){portrait.style.display='block';placeholder.style.display='none';}
 $('#year').textContent=new Date().getFullYear();
 const wa=$('#waLink');if(CONTACTO.whatsapp){wa.target='_blank';wa.rel='noopener noreferrer';}else wa.hidden=true;
