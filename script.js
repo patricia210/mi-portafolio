@@ -1,5 +1,5 @@
 // EDITA ESTOS DATOS ANTES DE PUBLICAR
-const CONTACTO = { email: 'tu-correo@ejemplo.com', whatsapp: '' }; // WhatsApp: código país + número, sin + ni espacios
+const CONTACTO = { email: 'patigil951@gmail.com', whatsapp: '584245319486' }; // WhatsApp: código país + número, sin + ni espacios
 
 const $ = (selector) => document.querySelector(selector);
 const body = document.body;
