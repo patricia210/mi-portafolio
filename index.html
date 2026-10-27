@@ -4,204 +4,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0b1024">
+    <meta name="theme-color" content="#1d2d3e">
     <meta name="description"
         content="Portafolio profesional: SAP SuccessFactors, integraciones, desarrollo web, sistemas, automatizaciones y cursos.">
-    <title>Portafolio | Ingeniería & Soluciones Digitales</title>
+    <title>AngelaSAP | Ingeniería & Soluciones Digitales</title>
+    <!-- Vista previa al compartir el enlace (WhatsApp, LinkedIn, etc.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AngelaSAP">
+    <meta property="og:title" content="AngelaSAP | Ingeniería & Soluciones Digitales">
+    <meta property="og:description"
+        content="Ingeniera de Sistemas enfocada en SAP SuccessFactors EC, integraciones SAP CPI, desarrollo web y automatización.">
+    <meta property="og:url" content="https://patricia210.github.io/mi-portafolio/">
+    <meta property="og:image" content="https://patricia210.github.io/mi-portafolio/angela.jpg">
+    <meta property="og:image:alt" content="Fotografía profesional de Angela">
+    <meta property="og:locale" content="es_VE">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://patricia210.github.io/mi-portafolio/">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preload" as="image" href="angela.webp" imagesrcset="angela-480.webp 480w, angela.webp 853w"
+        imagesizes="(max-width: 780px) 86vw, 400px" type="image/webp" fetchpriority="high">
+    <!-- Datos para buscadores (Google). Si cambia el nombre o el cargo, actualízalo también aquí. -->
+    <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Angela",
+      "jobTitle": "Ingeniera de Sistemas",
+      "description": "Ingeniera de Sistemas enfocada en SAP SuccessFactors EC, integraciones SAP CPI, desarrollo web y automatización.",
+      "url": "https://patricia210.github.io/mi-portafolio/",
+      "image": "https://patricia210.github.io/mi-portafolio/angela.jpg",
+      "email": "mailto:patigil951@gmail.com",
+      "telephone": "+584245319486",
+      "knowsAbout": [
+        "SAP SuccessFactors Employee Central",
+        "SAP Integration Suite",
+        "SAP CPI",
+        "OData",
+        "REST",
+        "SOAP",
+        "n8n",
+        "Desarrollo web"
+      ],
+      "knowsLanguage": [
+        "es"
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- La fuente se carga sin bloquear la primera pintura de la página -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tema-empresarial.css">
 </head>
 
 <body>
+    <script>
+        // Tema antes de mostrar la página (evita un parpadeo): el guardado, o el del sistema del visitante
+        (() => { let t; try { t = localStorage.getItem('portfolio-theme'); } catch {} if ((t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'light') document.body.classList.add('light'); })();
+    </script>
     <div class="scroll-progress" id="progress"></div>
     <div class="aurora" aria-hidden="true"></div>
-    <header class="topbar"><a href="#inicio" class="logo" aria-label="Ir al inicio"><span class="logo-mark">✦</span>
-            <span>Mi<span class="accent">Portfolio</span></span></a>
-        <nav class="nav" id="nav" aria-label="Navegación principal"><a href="#sobre-mi">Sobre mí</a><a
-                href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#cursos">Cursos</a><a
-                href="#contacto">Contacto</a></nav>
-        <div class="nav-actions"><button id="themeToggle" class="icon-btn" aria-label="Cambiar tema"
+    <header class="topbar"><a href="#inicio" class="logo" aria-label="Ir al inicio"><span class="logo-mark"><svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+                    <ellipse cx="16" cy="4.6" rx="5.2" ry="1.7" fill="none" stroke="currentColor" stroke-width="1.6" />
+                    <circle cx="16" cy="10.6" r="3.4" fill="currentColor" />
+                    <path d="M14.2 15.5C10 11.5 4.5 11.8 2 16.5c3.4.2 6.6 2 9.8 5.2zM17.8 15.5c4.2-4 9.7-3.7 12.2 1-3.4.2-6.6 2-9.8 5.2z" fill="currentColor" opacity=".75" />
+                    <path d="M16 14.6l-4.6 13.2q4.6 1.6 9.2 0z" fill="currentColor" />
+                </svg></span>
+            <span>Angela<span class="accent">SAP</span></span></a>
+        <nav class="nav" id="nav" aria-label="Navegación principal"><a href="#sobre-mi" data-i18n="nav.sobre">Sobre mí</a><a
+                href="#servicios" data-i18n="nav.servicios">Servicios</a><a href="#proyectos" data-i18n="nav.proyectos">Proyectos</a><a
+                href="#cursos" data-i18n="nav.cursos">Cursos</a><a href="#contacto" data-i18n="nav.contacto">Contacto</a></nav>
+        <div class="nav-actions"><button id="langToggle" class="icon-btn lang-btn" aria-label="Ver en inglés"
+                title="English">EN</button><button id="themeToggle" class="icon-btn" aria-label="Cambiar tema"
                 title="Cambiar tema">☼</button><button id="menuToggle" class="icon-btn mobile-menu"
-                aria-label="Abrir menú" aria-expanded="false">☰</button><a class="nav-cta" href="#contacto">Hablemos
-                <span>↗</span></a></div>
+                aria-label="Abrir menú" aria-expanded="false">☰</button><a class="nav-cta" href="#contacto"><span
+                    data-i18n="nav.cta">Hablemos</span> <span>↗</span></a></div>
     </header>
     <main>
         <section id="inicio" class="hero section">
             <div class="hero-copy reveal">
-                <div class="eyebrow"><span class="pulse"></span> Disponible para proyectos y colaboraciones</div>
-                <p class="kicker">INGENIERÍA · TECNOLOGÍA · INNOVACIÓN</p>
-                <h1>Conecto ideas con <span class="gradient-text">soluciones digitales.</span></h1>
-                <p class="lead">Ingeniera de Sistemas enfocada en <strong>SAP SuccessFactors EC</strong>,
-                    <strong>integraciones SAP CPI</strong>, desarrollo web y automatización. Tecnología que simplifica
-                    procesos y crea oportunidades.</p>
-                <div class="hero-buttons"><a class="btn btn-primary" href="#servicios">Explorar servicios
-                        <span>↗</span></a><a class="btn btn-ghost" href="#proyectos">Ver proyectos <span>→</span></a>
+                <div class="eyebrow"><span class="pulse"></span> <span data-i18n="hero.disponible">Disponible para
+                        proyectos y colaboraciones</span></div>
+                <p class="kicker" data-i18n="hero.kicker">INGENIERÍA · TECNOLOGÍA · INNOVACIÓN</p>
+                <h1 data-i18n="hero.titulo">Conecto ideas con <span class="gradient-text">soluciones digitales.</span></h1>
+                <p class="lead" data-i18n="hero.lead">Ingeniera de Sistemas enfocada en <strong>SAP SuccessFactors
+                        EC</strong>, <strong>integraciones SAP CPI</strong>, desarrollo web y automatización. Tecnología
+                    que simplifica procesos y crea oportunidades.</p>
+                <div class="hero-buttons"><a class="btn btn-primary" href="#servicios"><span
+                            data-i18n="hero.explorar">Explorar servicios</span> <span>↗</span></a><a class="btn btn-ghost"
+                        href="#proyectos"><span data-i18n="hero.verProyectos">Ver proyectos</span> <span>→</span></a>
                 </div>
-                <div class="tags"><span>SAP EC</span><span>Integration Suite</span><span>REST / SOAP</span><span>Web &
-                        n8n</span></div>
             </div>
-            <div class="hero-visual reveal" aria-label="Espacio para tu fotografía profesional">
-
+            <div class="hero-visual reveal">
                 <div class="orbit orbit-one"></div>
                 <div class="orbit orbit-two"></div>
                 <div class="photo-halo"></div>
-               <div class="photo-frame">
-    <img
-        src="assets/mi-foto.webp.jpeg"
-        alt="Mi fotografía profesional"
-        id="portrait"
-    >
-</div>
-                <div class="float-card card-top"><span>✧</span> SAP + INTEGRACIONES</div>
-                <div class="float-card card-bottom"><span class="green-dot"></span> Soluciones a medida</div>
-            </div><a class="scroll-cue" href="#sobre-mi">DESLIZA PARA EXPLORAR <span>↓</span></a>
+                <div class="photo-frame">
+                    <img src="angela.webp" srcset="angela-480.webp 480w, angela.webp 853w"
+                        sizes="(max-width: 780px) 86vw, 400px" alt="Fotografía profesional de Angela" id="portrait"
+                        width="853" height="1280" fetchpriority="high" decoding="async">
+                    <div class="photo-placeholder" id="photoPlaceholder"><span class="placeholder-icon">✦</span>TU
+                        FOTO<small>Agrega angela.webp</small></div>
+                </div>
+                <div class="float-card card-top"><span>✧</span> SAP + <span data-i18n="hero.integraciones">INTEGRACIONES</span></div>
+                <div class="float-card card-bottom"><span class="green-dot"></span> <span
+                        data-i18n="hero.aMedida">Soluciones a medida</span></div>
+            </div>
+        </section>
+        <!-- Franja de tecnologías: se desplaza sola, se pausa con el mouse y cada una lleva a su servicio -->
+        <section class="tech-band" aria-labelledby="techTitle">
+            <p class="tech-title" id="techTitle" data-i18n="tech.titulo">TECNOLOGÍAS CON LAS QUE TRABAJO</p>
+            <div class="marquee">
+                <div class="marquee-track" id="techTrack">
+                    <a class="tech" href="#srv-ec"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><circle cx="17" cy="9" r="2.5" /><path d="M15.5 14.2c3 .2 5.5 2.6 5.5 5.8" /></svg></span><span class="tech-name">SAP SuccessFactors EC</span><span class="tech-desc" data-i18n="tech.ec">Datos y estructura de empleados</span></a>
+                    <a class="tech" href="#srv-int"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5" /></svg></span><span class="tech-name">SAP Integration Suite</span><span class="tech-desc" data-i18n="tech.cpi">Flujos de integración en la nube</span></a>
+                    <a class="tech" href="#srv-int"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3" /><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3" /></svg></span><span class="tech-name">OData</span><span class="tech-desc" data-i18n="tech.odata">APIs de datos de SuccessFactors</span></a>
+                    <a class="tech" href="#srv-int"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4C6 4 5 5 5 7v2c0 1.5-1 3-2 3 1 0 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 3 2 3-1 0-2 1.5-2 3v2c0 2-1 3-3 3" /></svg></span><span class="tech-name">REST</span><span class="tech-desc" data-i18n="tech.rest">Servicios web modernos</span></a>
+                    <a class="tech" href="#srv-int"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg></span><span class="tech-name">SOAP</span><span class="tech-desc" data-i18n="tech.soap">Servicios web empresariales</span></a>
+                    <a class="tech" href="#srv-int"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" /></svg></span><span class="tech-name">XML</span><span class="tech-desc" data-i18n="tech.xml">Transformación de mensajes</span></a>
+                    <a class="tech" href="#srv-ec"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><path d="M17.5 14v7M14 17.5h7" /></svg></span><span class="tech-name">MDF</span><span class="tech-desc" data-i18n="tech.mdf">Objetos personalizados</span></a>
+                    <a class="tech" href="#srv-ec"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z" /><path d="M9 12l2 2 4-4" /></svg></span><span class="tech-name">RBP</span><span class="tech-desc" data-i18n="tech.rbp">Permisos por roles</span></a>
+                    <a class="tech" href="#srv-auto"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2.5" /><circle cx="19" cy="6" r="2.5" /><circle cx="19" cy="18" r="2.5" /><path d="M7.5 12h4l5-5.2M11.5 12l5 5.2" /></svg></span><span class="tech-name">n8n</span><span class="tech-desc" data-i18n="tech.n8n">Automatización de flujos</span></a>
+                    <a class="tech" href="#srv-web"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4" /></svg></span><span class="tech-name">HTML</span><span class="tech-desc" data-i18n="tech.html">Estructura de sitios web</span></a>
+                    <a class="tech" href="#srv-web"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 100 18c1.1 0 1.5-.8 1.5-1.6 0-1.2-1-1.6-1-2.6s.8-1.8 1.8-1.8H17a4 4 0 004-4c0-4.4-4-8-9-8z" /><circle cx="7.5" cy="11" r="1" /><circle cx="10" cy="7" r="1" /><circle cx="15" cy="7.5" r="1" /></svg></span><span class="tech-name">CSS</span><span class="tech-desc" data-i18n="tech.css">Diseño adaptable</span></a>
+                    <a class="tech" href="#srv-web"><span class="tech-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6v9a3 3 0 01-6 0M20 7.5A3 3 0 0017 6c-1.7 0-3 1-3 2.5s1.3 2.2 3 2.7 3 1.2 3 2.8S18.7 17 17 17a3 3 0 01-3-1.5" /></svg></span><span class="tech-name">JavaScript</span><span class="tech-desc" data-i18n="tech.js">Interactividad</span></a>
+                </div>
+            </div>
         </section>
         <section id="sobre-mi" class="section about">
-            <div class="section-heading reveal"><span class="section-index">01 / PERFIL</span>
-                <h2>Más que código, <span class="gradient-text">soluciones con propósito.</span></h2>
+            <div class="section-heading reveal"><span class="section-index" data-i18n="perfil.indice">01 / PERFIL</span>
+                <h2 data-i18n="perfil.titulo">Más que código, <span class="gradient-text">soluciones con propósito.</span></h2>
             </div>
             <div class="about-grid">
                 <div class="glass about-main reveal">
-                    <div class="tiny-label">HOLA, SOY</div>
-                    <h3>Ingeniera de Sistemas<span class="accent">.</span></h3>
-                    <p>Me apasiona conectar personas, procesos y tecnología. Desarrollo mis conocimientos en SAP
-                        SuccessFactors Employee Central e integraciones con SAP Integration Suite (CPI), y exploro
-                        soluciones web y automatizaciones para negocios.</p>
-                    <p>Este espacio reúne mi perfil, servicios, proyectos y próximos cursos. Aquí podrás conocer lo que
-                        hago y conversar sobre nuevas ideas.</p><a href="#contacto" class="inline-link">Conectemos ↗</a>
+                    <div class="tiny-label" data-i18n="perfil.hola">HOLA, SOY</div>
+                    <h3>Angela<span class="accent">.</span></h3>
+                    <p class="role" data-i18n="perfil.cargo">Ingeniera de Sistemas</p>
+                    <p data-i18n="perfil.p1">Me apasiona conectar personas, procesos y tecnología. Desarrollo mis
+                        conocimientos en SAP SuccessFactors Employee Central e integraciones con SAP Integration Suite
+                        (CPI), y exploro soluciones web y automatizaciones para negocios.</p>
+                    <p data-i18n="perfil.p2">Este espacio reúne mi perfil, servicios, proyectos y próximos cursos. Aquí
+                        podrás conocer lo que hago y conversar sobre nuevas ideas.</p>
+                    <div class="about-links"><a href="#contacto" class="inline-link"><span
+                                data-i18n="perfil.conectemos">Conectemos</span> ↗</a><a class="inline-link cv-link" href="#contacto"
+                            hidden download><span data-i18n="perfil.cv">Descargar CV</span> ↓</a><a
+                            class="inline-link linkedin-link" href="#contacto" hidden target="_blank" rel="noopener noreferrer">LinkedIn
+                            ↗</a></div>
                 </div>
                 <div class="about-side">
-                    <div class="glass mini-panel reveal"><span class="mini-icon">⌘</span><strong>SAP &
-                            Integraciones</strong><small>Employee Central · CPI · OData · SOAP</small></div>
-                    <div class="glass mini-panel reveal"><span class="mini-icon">◇</span><strong>Soluciones
-                            digitales</strong><small>Web · Sistemas · Automatización</small></div>
-                    <div class="glass mini-panel reveal"><span class="mini-icon">↗</span><strong>Aprendizaje
-                            continuo</strong><small>Tecnología, innovación y formación</small></div>
+                    <div class="glass mini-panel reveal"><span class="mini-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5" /></svg></span><strong
+                            data-i18n="perfil.panel1">SAP & Integraciones</strong><small>Employee Central · CPI · OData ·
+                            SOAP</small></div>
+                    <div class="glass mini-panel reveal"><span class="mini-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18M9 9v11" /></svg></span><strong
+                            data-i18n="perfil.panel2">Soluciones digitales</strong><small
+                            data-i18n="perfil.panel2sub">Web · Sistemas · Automatización</small></div>
+                    <div class="glass mini-panel reveal"><span class="mini-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 8l10-5 10 5-10 5z" /><path d="M6 10v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5M22 8v6" /></svg></span><strong
+                            data-i18n="perfil.panel3">Aprendizaje continuo</strong><small
+                            data-i18n="perfil.panel3sub">Tecnología, innovación y formación</small></div>
                 </div>
+            </div>
+            <!-- Se muestra solo cuando hay certificaciones en CERTIFICACIONES (script.js) -->
+            <div class="certs reveal" id="certificaciones" hidden>
+                <h3 class="certs-title" data-i18n="certs.titulo">Certificaciones</h3>
+                <div class="cert-grid" id="certGrid"></div>
             </div>
         </section>
         <section id="servicios" class="section services">
-            <div class="section-heading reveal"><span class="section-index">02 / SERVICIOS</span>
-                <h2>Lo que puedo <span class="gradient-text">crear contigo.</span></h2>
-                <p>Soluciones que conectan tecnología y necesidades reales.</p>
+            <div class="section-heading reveal"><span class="section-index" data-i18n="servicios.indice">02 /
+                    SERVICIOS</span>
+                <h2 data-i18n="servicios.titulo">Lo que puedo <span class="gradient-text">crear contigo.</span></h2>
+                <p data-i18n="servicios.sub">Soluciones que conectan tecnología y necesidades reales.</p>
             </div>
             <div class="bento">
-                <article class="glass service-card wide reveal tilt">
-                    <div class="service-icon">◈</div><span class="card-number">01</span>
+                <article class="glass service-card wide reveal tilt" id="srv-ec">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><circle cx="17" cy="9" r="2.5" /><path d="M15.5 14.2c3 .2 5.5 2.6 5.5 5.8" /></svg></div><span class="card-number">01</span>
                     <h3>SAP SuccessFactors EC</h3>
-                    <p>Estructuras organizativas, datos de empleados, objetos MDF, reglas de negocio, eventos y procesos
-                        de Employee Central.</p>
+                    <p data-i18n="servicios.s1">Estructuras organizativas, datos de empleados, objetos MDF, reglas de
+                        negocio, eventos y procesos de Employee Central.</p>
                     <div class="chips"><span>Employee Central</span><span>MDF</span><span>RBP</span></div><a
-                        href="#contacto" class="card-link">Consultar servicio ↗</a>
+                        href="#contacto" class="card-link"><span data-i18n="servicios.consultar">Consultar
+                            servicio</span> ↗</a>
                 </article>
-                <article class="glass service-card reveal tilt">
-                    <div class="service-icon">⇄</div><span class="card-number">02</span>
-                    <h3>Integraciones SAP</h3>
-                    <p>Interfaces y flujos de integración con SAP CPI, OData, REST, SOAP y transformación de datos.</p>
+                <article class="glass service-card reveal tilt" id="srv-int">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5" /></svg></div><span class="card-number">02</span>
+                    <h3 data-i18n="servicios.s2t">Integraciones SAP</h3>
+                    <p data-i18n="servicios.s2">Interfaces y flujos de integración con SAP CPI, OData, REST, SOAP y
+                        transformación de datos.</p>
                     <div class="chips"><span>SAP CPI</span><span>APIs</span></div><a href="#contacto"
-                        class="card-link">Consultar servicio ↗</a>
+                        class="card-link"><span data-i18n="servicios.consultar">Consultar servicio</span> ↗</a>
                 </article>
-                <article class="glass service-card reveal tilt">
-                    <div class="service-icon">⌘</div><span class="card-number">03</span>
-                    <h3>Desarrollo web</h3>
-                    <p>Landing pages, portafolios, sitios informativos y experiencias web adaptadas a móviles.</p>
+                <article class="glass service-card reveal tilt" id="srv-web">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4" /></svg></div><span class="card-number">03</span>
+                    <h3 data-i18n="servicios.s3t">Desarrollo web</h3>
+                    <p data-i18n="servicios.s3">Landing pages, portafolios, sitios informativos y experiencias web
+                        adaptadas a móviles.</p>
                     <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><a href="#contacto"
-                        class="card-link">Consultar servicio ↗</a>
+                        class="card-link"><span data-i18n="servicios.consultar">Consultar servicio</span> ↗</a>
                 </article>
-                <article class="glass service-card reveal tilt">
-                    <div class="service-icon">▣</div><span class="card-number">04</span>
-                    <h3>Sistemas digitales</h3>
-                    <p>Formularios, herramientas internas y soluciones web para organizar procesos de negocios.</p>
-                    <div class="chips"><span>Aplicaciones</span><span>Procesos</span></div><a href="#contacto"
-                        class="card-link">Consultar servicio ↗</a>
+                <article class="glass service-card reveal tilt" id="srv-sis">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18M9 9v11" /></svg></div><span class="card-number">04</span>
+                    <h3 data-i18n="servicios.s4t">Sistemas digitales</h3>
+                    <p data-i18n="servicios.s4">Formularios, herramientas internas y soluciones web para organizar
+                        procesos de negocios.</p>
+                    <div class="chips"><span data-i18n="servicios.s4c1">Aplicaciones</span><span
+                            data-i18n="servicios.s4c2">Procesos</span></div><a href="#contacto" class="card-link"><span
+                            data-i18n="servicios.consultar">Consultar servicio</span> ↗</a>
                 </article>
-                <article class="glass service-card wide reveal tilt">
-                    <div class="service-icon">✳</div><span class="card-number">05</span>
-                    <h3>Automatizaciones para emprendimientos</h3>
-                    <p>Flujos con n8n, integración de herramientas, gestión de solicitudes y automatización de tareas
-                        repetitivas y procesos de redes sociales mediante servicios autorizados.</p>
-                    <div class="chips"><span>n8n</span><span>Workflows</span><span>Emprendimientos</span></div><a
-                        href="#contacto" class="card-link">Consultar servicio ↗</a>
+                <article class="glass service-card wide reveal tilt" id="srv-auto">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2.5" /><circle cx="19" cy="6" r="2.5" /><circle cx="19" cy="18" r="2.5" /><path d="M7.5 12h4l5-5.2M11.5 12l5 5.2" /></svg></div><span class="card-number">05</span>
+                    <h3 data-i18n="servicios.s5t">Automatizaciones para emprendimientos</h3>
+                    <p data-i18n="servicios.s5">Flujos con n8n, integración de herramientas, gestión de solicitudes y
+                        automatización de tareas repetitivas y procesos de redes sociales mediante servicios
+                        autorizados.</p>
+                    <div class="chips"><span>n8n</span><span>Workflows</span><span
+                            data-i18n="servicios.s5c">Emprendimientos</span></div><a href="#contacto"
+                        class="card-link"><span data-i18n="servicios.consultar">Consultar servicio</span> ↗</a>
                 </article>
             </div>
         </section>
         <section id="proyectos" class="section projects">
-            <div class="section-heading reveal"><span class="section-index">03 / PORTAFOLIO</span>
-                <h2>Ideas en <span class="gradient-text">acción.</span></h2>
-                <p>Espacio para mostrar proyectos reales y ejercicios de práctica. Los ejemplos actuales son
-                    demostrativos.</p>
+            <div class="section-heading reveal"><span class="section-index" data-i18n="proyectos.indice">03 /
+                    PORTAFOLIO</span>
+                <h2 data-i18n="proyectos.titulo">Ideas en <span class="gradient-text">acción.</span></h2>
+                <p data-i18n="proyectos.sub">Espacio para mostrar proyectos reales y ejercicios de práctica. Los ejemplos
+                    actuales son demostrativos.</p>
             </div>
             <div class="filters reveal" role="group" aria-label="Filtrar proyectos"><button class="filter active"
-                    data-filter="todos">Todos</button><button class="filter" data-filter="sap">SAP</button><button
-                    class="filter" data-filter="web">Web</button><button class="filter"
-                    data-filter="auto">Automatización</button></div>
+                    data-filter="todos" data-i18n="proyectos.todos">Todos</button><button class="filter"
+                    data-filter="sap">SAP</button><button class="filter" data-filter="web">Web</button><button
+                    class="filter" data-filter="auto" data-i18n="proyectos.auto">Automatización</button></div>
             <div class="project-grid">
+                <!-- PLANTILLA PARA UN PROYECTO REAL: copia este bloque, cambia data-category (sap, web o auto)
+                     y rellena el reto, la solución y el resultado con datos verificables.
                 <article class="glass project-card reveal" data-category="sap">
                     <div class="project-art art-sap"><span>EC <b>⇄</b> CPI</span></div>
-                    <div class="project-body"><small>DEMO / EJERCICIO</small>
-                        <h3>Integración de datos SAP</h3>
-                        <p>Ejemplo conceptual de lectura y transformación de datos de Employee Central.</p><span
-                            class="project-tech">OData · CPI · XML</span>
+                    <div class="project-body"><small>PROYECTO REAL · 2026</small>
+                        <h3>Nombre del proyecto</h3>
+                        <dl class="project-facts">
+                            <dt>Reto</dt><dd>Qué problema tenía el cliente o la empresa.</dd>
+                            <dt>Solución</dt><dd>Qué construiste y con qué herramientas.</dd>
+                            <dt>Resultado</dt><dd>Qué mejoró (tiempo ahorrado, errores evitados, etc.).</dd>
+                        </dl><span class="project-tech">OData · CPI · XML</span>
+                    </div>
+                </article>
+                -->
+                <article class="glass project-card reveal" data-category="sap">
+                    <div class="project-art art-sap"><svg class="art" viewBox="0 0 240 130" aria-hidden="true">
+                            <rect x="14" y="40" width="62" height="50" rx="8" class="art-box" /><text x="45" y="70" class="art-label">EC</text>
+                            <rect x="89" y="32" width="62" height="66" rx="8" class="art-box art-box-strong" /><text x="120" y="62" class="art-label">CPI</text>
+                            <path d="M106 74h28" class="art-line" /><circle cx="106" cy="74" r="2.5" class="art-dot" /><circle cx="134" cy="74" r="2.5" class="art-dot" />
+                            <rect x="164" y="40" width="62" height="50" rx="8" class="art-box" /><text x="195" y="70" class="art-label">API</text>
+                            <path d="M78 65h9M153 65h9" class="art-line art-flow" />
+                        </svg></div>
+                    <div class="project-body"><small data-i18n="proyectos.demoEjercicio">DEMO / EJERCICIO</small>
+                        <h3 data-i18n="proyectos.p1t">Integración de datos SAP</h3>
+                        <p data-i18n="proyectos.p1">Ejemplo conceptual de lectura y transformación de datos de Employee
+                            Central.</p><span class="project-tech">OData · CPI · XML</span>
                     </div>
                 </article>
                 <article class="glass project-card reveal" data-category="web">
-                    <div class="project-art art-web"><span>&lt;web /&gt;</span></div>
-                    <div class="project-body"><small>DEMO / CONCEPTO</small>
-                        <h3>Landing page para negocios</h3>
-                        <p>Propuesta de sitio moderno para presentar servicios y captar consultas.</p><span
-                            class="project-tech">HTML · CSS · JavaScript</span>
+                    <div class="project-art art-web"><svg class="art" viewBox="0 0 240 130" aria-hidden="true">
+                            <rect x="30" y="14" width="180" height="104" rx="8" class="art-box" />
+                            <path d="M30 32h180" class="art-line" /><circle cx="42" cy="23" r="2.5" class="art-dot" /><circle cx="51" cy="23" r="2.5" class="art-dot" /><circle cx="60" cy="23" r="2.5" class="art-dot" />
+                            <rect x="44" y="44" width="78" height="8" rx="4" class="art-fill" /><rect x="44" y="58" width="56" height="6" rx="3" class="art-fill art-soft" />
+                            <rect x="44" y="72" width="36" height="12" rx="4" class="art-fill art-accent" />
+                            <rect x="136" y="42" width="60" height="44" rx="6" class="art-fill art-soft" />
+                            <rect x="44" y="96" width="44" height="12" rx="3" class="art-fill art-soft" /><rect x="96" y="96" width="44" height="12" rx="3" class="art-fill art-soft" /><rect x="148" y="96" width="48" height="12" rx="3" class="art-fill art-soft" />
+                        </svg></div>
+                    <div class="project-body"><small data-i18n="proyectos.demoConcepto">DEMO / CONCEPTO</small>
+                        <h3 data-i18n="proyectos.p2t">Landing page para negocios</h3>
+                        <p data-i18n="proyectos.p2">Propuesta de sitio moderno para presentar servicios y captar
+                            consultas.</p><span class="project-tech">HTML · CSS · JavaScript</span>
                     </div>
                 </article>
                 <article class="glass project-card reveal" data-category="auto">
-                    <div class="project-art art-auto"><span>◎ → ◇ → ✓</span></div>
-                    <div class="project-body"><small>DEMO / CONCEPTO</small>
-                        <h3>Flujo de automatización</h3>
-                        <p>Ejemplo de conexión entre formularios y notificaciones de un emprendimiento.</p><span
-                            class="project-tech">n8n · Workflows</span>
+                    <div class="project-art art-auto"><svg class="art" viewBox="0 0 240 130" aria-hidden="true">
+                            <path d="M50 65h40M130 65l20-22M130 65l20 22M168 43h22M168 87h22" class="art-line art-flow" />
+                            <rect x="20" y="49" width="32" height="32" rx="8" class="art-box" /><path d="M29 61h14M29 66h14M29 71h9" class="art-line" />
+                            <rect x="92" y="47" width="36" height="36" rx="18" class="art-box art-box-strong" /><path d="M104 65l5 5 9-10" class="art-line" />
+                            <rect x="150" y="29" width="28" height="28" rx="7" class="art-box" /><path d="M157 38l7 5 7-5M157 38v11h14V38" class="art-line" />
+                            <rect x="150" y="73" width="28" height="28" rx="7" class="art-box" /><path d="M158 93l4-9 4 6 4-4" class="art-line" />
+                            <circle cx="203" cy="43" r="10" class="art-box" /><circle cx="203" cy="87" r="10" class="art-box" />
+                        </svg></div>
+                    <div class="project-body"><small data-i18n="proyectos.demoConcepto">DEMO / CONCEPTO</small>
+                        <h3 data-i18n="proyectos.p3t">Flujo de automatización</h3>
+                        <p data-i18n="proyectos.p3">Ejemplo de conexión entre formularios y notificaciones de un
+                            emprendimiento.</p><span class="project-tech">n8n · Workflows</span>
                     </div>
                 </article>
             </div>
         </section>
         <section id="cursos" class="section courses">
-            <div class="section-heading reveal"><span class="section-index">04 / FORMACIÓN</span>
-                <h2>Aprender también es <span class="gradient-text">evolucionar.</span></h2>
-                <p>Próximamente: formación por niveles para desarrollar nuevas habilidades.</p>
+            <div class="section-heading reveal"><span class="section-index" data-i18n="cursos.indice">04 /
+                    FORMACIÓN</span>
+                <h2 data-i18n="cursos.titulo">Aprender también es <span class="gradient-text">evolucionar.</span></h2>
+                <p data-i18n="cursos.sub">Próximamente: formación por niveles para desarrollar nuevas habilidades.</p>
             </div>
             <div class="course-grid">
                 <div class="glass course-block reveal">
-                    <div class="course-head"><span class="course-symbol">Aa</span><span class="soon">PRÓXIMAMENTE</span>
+                    <div class="course-head"><span class="course-symbol">Aa</span><span class="soon"
+                            data-i18n="cursos.pronto">PRÓXIMAMENTE</span>
                     </div>
-                    <h3>Inglés por niveles</h3>
-                    <p>Un recorrido progresivo para aprender y practicar inglés desde los fundamentos.</p>
-                    <div class="levels"><span>A1 · Principiante</span><span>A2 · Básico</span><span>B1 ·
-                            Intermedio</span><span>B2 · Intermedio alto</span></div><a href="#contacto"
-                        class="inline-link">Solicitar información ↗</a>
+                    <h3 data-i18n="cursos.c1t">Inglés por niveles</h3>
+                    <p data-i18n="cursos.c1">Un recorrido progresivo para aprender y practicar inglés desde los
+                        fundamentos.</p>
+                    <div class="levels"><span data-i18n="cursos.a1">A1 · Principiante</span><span data-i18n="cursos.a2">A2
+                            · Básico</span><span data-i18n="cursos.b1">B1 · Intermedio</span><span data-i18n="cursos.b2">B2
+                            · Intermedio alto</span></div><a href="#contacto" class="inline-link"><span
+                            data-i18n="cursos.info">Solicitar información</span> ↗</a>
                 </div>
                 <div class="glass course-block reveal">
-                    <div class="course-head"><span class="course-symbol">EC</span><span class="soon">PRÓXIMAMENTE</span>
+                    <div class="course-head"><span class="course-symbol">EC</span><span class="soon"
+                            data-i18n="cursos.pronto">PRÓXIMAMENTE</span>
                     </div>
                     <h3>SAP SuccessFactors EC</h3>
-                    <p>Contenidos introductorios y prácticos para conocer Employee Central.</p>
-                    <div class="levels"><span>Introducción a SuccessFactors</span><span>Fundamentos de
-                            EC</span><span>Estructuras organizativas</span><span>Procesos de empleados</span></div><a
-                        href="#contacto" class="inline-link">Solicitar información ↗</a>
+                    <p data-i18n="cursos.c2">Contenidos introductorios y prácticos para conocer Employee Central.</p>
+                    <div class="levels"><span data-i18n="cursos.e1">Introducción a SuccessFactors</span><span
+                            data-i18n="cursos.e2">Fundamentos de EC</span><span data-i18n="cursos.e3">Estructuras
+                            organizativas</span><span data-i18n="cursos.e4">Procesos de empleados</span></div><a
+                        href="#contacto" class="inline-link"><span data-i18n="cursos.info">Solicitar información</span>
+                        ↗</a>
                 </div>
             </div>
         </section>
         <section id="contacto" class="section contact">
-            <div class="contact-panel glass reveal"><span class="section-index">05 / CONTACTO</span>
-                <h2>¿Creamos algo <span class="gradient-text">extraordinario?</span></h2>
-                <p>Cuéntame tu idea, proyecto o consulta profesional. Me encantará conocerla.</p>
-                <div class="contact-actions"><a class="btn btn-primary" id="emailLink"
-                        href="mailto:tu-correo@ejemplo.com?subject=Consulta%20desde%20mi%20portafolio">Enviar correo
-                        ↗</a><a class="btn btn-ghost" id="waLink" href="#contacto"
-                        aria-label="WhatsApp pendiente de configurar">WhatsApp ↗</a></div><small
-                    class="contact-note">Personaliza tu correo y WhatsApp en <code>script.js</code> antes de
-                    publicar.</small>
+            <div class="contact-panel glass reveal">
+                <div class="contact-info"><span class="section-index" data-i18n="contacto.indice">05 / CONTACTO</span>
+                    <h2 data-i18n="contacto.titulo">¿Creamos algo <span class="gradient-text">extraordinario?</span></h2>
+                    <p data-i18n="contacto.sub">Cuéntame tu idea, proyecto o consulta profesional. Me encantará
+                        conocerla.</p>
+                    <div class="contact-actions"><a class="btn btn-ghost wa-link" href="https://wa.me/584245319486">WhatsApp
+                            ↗</a><a class="btn btn-ghost linkedin-link" href="#contacto" hidden target="_blank"
+                            rel="noopener noreferrer">LinkedIn ↗</a><a class="btn btn-ghost cv-link" href="#contacto" hidden download><span
+                                data-i18n="perfil.cv">Descargar CV</span> ↓</a></div>
+                </div>
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-row">
+                        <label><span data-i18n="form.nombre">Nombre</span>
+                            <input name="nombre" autocomplete="name" required maxlength="80"></label>
+                        <label><span data-i18n="form.correo">Tu correo</span>
+                            <input name="correo" type="email" autocomplete="email" required maxlength="120"></label>
+                    </div>
+                    <label><span data-i18n="form.mensaje">Mensaje</span>
+                        <textarea name="mensaje" rows="6" required maxlength="2000"></textarea></label>
+                    <!-- Campo trampa contra spam: las personas no lo ven -->
+                    <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+                    <div class="form-actions"><button class="btn btn-primary" type="submit"><span
+                                data-i18n="form.enviar">Enviar mensaje</span> ↗</button>
+                        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                    </div>
+                </form>
             </div>
         </section>
     </main>
-    <footer class="footer"><span>✦ MiPortfolio</span><span>Diseñado con creatividad y tecnología · <span
-                id="year"></span></span><a href="#inicio">Volver arriba ↑</a></footer>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><a href="#inicio" class="logo"><span class="logo-mark"><svg viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><ellipse cx="16" cy="4.6" rx="5.2" ry="1.7" fill="none" stroke="currentColor" stroke-width="1.6" /><circle cx="16" cy="10.6" r="3.4" fill="currentColor" /><path d="M14.2 15.5C10 11.5 4.5 11.8 2 16.5c3.4.2 6.6 2 9.8 5.2zM17.8 15.5c4.2-4 9.7-3.7 12.2 1-3.4.2-6.6 2-9.8 5.2z" fill="currentColor" opacity=".75" /><path d="M16 14.6l-4.6 13.2q4.6 1.6 9.2 0z" fill="currentColor" /></svg></span><span>Angela<span
+                            class="accent">SAP</span></span></a>
+                <p data-i18n="footer.lema">SAP SuccessFactors · Integraciones · Soluciones digitales</p>
+            </div>
+            <nav class="footer-nav" aria-label="Secciones"><a href="#sobre-mi" data-i18n="nav.sobre">Sobre mí</a><a
+                    href="#servicios" data-i18n="nav.servicios">Servicios</a><a href="#proyectos"
+                    data-i18n="nav.proyectos">Proyectos</a><a href="#cursos" data-i18n="nav.cursos">Cursos</a><a
+                    href="#contacto" data-i18n="nav.contacto">Contacto</a></nav>
+            <div class="footer-social"><a class="wa-link" href="https://wa.me/584245319486">WhatsApp ↗</a><a
+                    class="linkedin-link" href="#contacto" hidden target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
+        </div>
+        <div class="footer-bottom"><span>© <span id="year"></span> AngelaSAP · <span data-i18n="footer.disenado">Diseñado
+                    con creatividad y tecnología</span></span><a href="#inicio"><span data-i18n="footer.arriba">Volver
+                    arriba</span> ↑</a></div>
+    </footer>
+    <!-- Botones flotantes: volver arriba (aparece al bajar) y WhatsApp -->
+    <div class="floating-actions">
+        <a class="float-btn to-top" href="#inicio" data-i18n-aria="flotante.arriba" aria-label="Volver arriba" hidden><svg
+                viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg></a>
+        <a class="float-btn whatsapp wa-link" href="https://wa.me/584245319486" data-i18n-aria="flotante.whatsapp"
+            aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A8 8 0 1 1 8.6 18.6z" /><path d="M9.2 8.6c.2-.5.5-.6.8-.6h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .5-.1.6l-.5.6c-.1.2-.1.4 0 .5.6 1.1 1.5 2 2.6 2.6.2.1.4.1.5 0l.6-.5c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3-.1.6-.6.8-.8.4-1.8.5-2.7.1a9.4 9.4 0 0 1-4.6-4.6c-.4-.9-.3-1.9.1-2.7z" class="wa-fill" /></svg><span class="float-label" data-i18n="flotante.escribeme">¿Hablamos?</span></a>
+    </div>
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
 
