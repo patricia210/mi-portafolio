@@ -117,7 +117,7 @@ const EN = {
 // Textos que genera script.js (mensajes, botones y atributos)
 const UI = {
   es: {
-    titulo: 'AngelaSAP | Ingeniería & Soluciones Digitales',
+    titulo: 'Code and SAP | Ingeniería & Soluciones Digitales',
     idioma: 'EN', idiomaLabel: 'Ver en inglés', idiomaTitle: 'English',
     verificar: 'Verificar ↗',
     asunto: 'Consulta desde mi portafolio',
@@ -129,7 +129,7 @@ const UI = {
     error: 'No se pudo enviar. Escríbeme por WhatsApp o inténtalo de nuevo.'
   },
   en: {
-    titulo: 'AngelaSAP | Engineering & Digital Solutions',
+    titulo: 'Code and SAP | Engineering & Digital Solutions',
     idioma: 'ES', idiomaLabel: 'Ver en español', idiomaTitle: 'Español',
     verificar: 'Verify ↗',
     asunto: 'Inquiry from your portfolio',
