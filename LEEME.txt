@@ -1,0 +1,11 @@
+PORTAFOLIO PROFESIONAL 2026
+
+1. Abre index.html con Chrome o Edge.
+2. Para mostrar tu fotografía: guarda tu imagen como assets/mi-foto.webp (preferiblemente con fondo transparente).
+3. En script.js edita CONTACTO.email y CONTACTO.whatsapp.
+4. Cambia los textos de ejemplo de index.html por tu experiencia real.
+5. Las tarjetas de proyectos son demostraciones, no proyectos profesionales verificados.
+6. Los cursos están marcados como PRÓXIMAMENTE y no tienen plataforma de pago ni inscripciones activas.
+7. Si quieres ofrecer un CV descargable, agrega tu PDF a assets y crea un enlace en el HTML.
+
+Todo funciona sin instalar librerías. No se han añadido fotografías personales ni datos de contacto reales.
