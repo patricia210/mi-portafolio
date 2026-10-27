@@ -14,8 +14,7 @@ const CERTIFICACIONES = [
 const $ = (selector) => document.querySelector(selector);
 const body = document.body;
 const toggle = $('#themeToggle');
-const storedTheme = (() => { try { return localStorage.getItem('portfolio-theme'); } catch { return null; } })();
-if (storedTheme !== 'dark') body.classList.add('light'); // El tema claro empresarial es el predeterminado
+// El tema inicial se aplica en index.html (justo después de <body>) para que no parpadee
 function updateThemeIcon(){ toggle.textContent = body.classList.contains('light') ? '☾' : '☼'; }
 updateThemeIcon();
 toggle.addEventListener('click', () => {
@@ -27,6 +26,19 @@ menuToggle.addEventListener('click', () => { const open = nav.classList.toggle('
 nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); menuToggle.setAttribute('aria-expanded','false'); menuToggle.textContent='☰'; }));
 function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;$('#progress').style.width=(max>0?scrollY/max*100:0)+'%';}
 addEventListener('scroll',updateProgress,{passive:true});updateProgress();
+// Botón "volver arriba": aparece después de bajar un poco
+const toTop = $('.to-top');
+const updateToTop = () => { toTop.hidden = scrollY < 700; };
+addEventListener('scroll', updateToTop, { passive: true }); updateToTop();
+// Menú: marca la sección que se está viendo
+const navLinks = [...nav.querySelectorAll('a')];
+if ('IntersectionObserver' in window) {
+  const secciones = navLinks.map(a => $(a.getAttribute('href'))).filter(Boolean);
+  const visor = new IntersectionObserver(entradas => entradas.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  secciones.forEach(s => visor.observe(s));
+}
 const reveals = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window){ const observer = new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.1}); reveals.forEach(el=>observer.observe(el)); } else reveals.forEach(el=>el.classList.add('visible'));
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -51,6 +63,7 @@ document.querySelectorAll('.cv-link').forEach(a=>{if(CONTACTO.cv){a.href=CONTACT
 // IDIOMA (español / inglés). El español sale del HTML y el inglés de i18n.js
 const ES = {};
 document.querySelectorAll('[data-i18n]').forEach(el => { ES[el.dataset.i18n] ??= el.innerHTML; });
+document.querySelectorAll('[data-i18n-aria]').forEach(el => { ES[el.dataset.i18nAria] ??= el.getAttribute('aria-label'); });
 const langBtn = $('#langToggle');
 let lang = (() => { try { return localStorage.getItem('portfolio-lang'); } catch { return null; } })() || (navigator.language.startsWith('en') ? 'en' : 'es');
 const t = clave => UI[lang][clave];
@@ -70,6 +83,7 @@ function renderCertificaciones(){
 }
 function aplicarIdioma(){
   document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.dataset.i18n; el.innerHTML = lang === 'en' ? (EN[k] ?? ES[k]) : ES[k]; });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => { const k = el.dataset.i18nAria; el.setAttribute('aria-label', lang === 'en' ? (EN[k] ?? ES[k]) : ES[k]); });
   document.documentElement.lang = lang;
   document.title = t('titulo');
   langBtn.textContent = t('idioma'); langBtn.title = t('idiomaTitle'); langBtn.setAttribute('aria-label', t('idiomaLabel'));
@@ -111,14 +125,15 @@ const OJOS = [
 ];
 const MAX_X = 9, MAX_Y = 3.2; // desplazamiento máximo del iris (px de la foto)
 function iniciarMirada(){
-  if (portrait.naturalWidth !== 853 || !matchMedia('(hover:hover) and (pointer:fine)').matches || reducedMotion.matches) return;
+  // Funciona con cualquier tamaño de la misma foto (angela.webp o angela-480.webp): todo se dibuja a 853×1280
+  if (!portrait.naturalWidth || Math.abs(portrait.naturalWidth / portrait.naturalHeight - 853 / 1280) > .01 || !matchMedia('(hover:hover) and (pointer:fine)').matches || reducedMotion.matches) return;
   const canvas = document.createElement('canvas');
   canvas.className = 'portrait-eyes'; canvas.width = 853; canvas.height = 1280; canvas.setAttribute('aria-hidden', 'true');
   portrait.after(canvas);
   const ctx = canvas.getContext('2d');
   // Copia de la foto para leer píxeles y recortar el iris
   const base = document.createElement('canvas'); base.width = 853; base.height = 1280;
-  const bctx = base.getContext('2d'); bctx.drawImage(portrait, 0, 0);
+  const bctx = base.getContext('2d'); bctx.drawImage(portrait, 0, 0, 853, 1280);
   let datos; try { datos = bctx.getImageData(0, 0, 853, 1280).data; } catch { canvas.remove(); return; }
   const pixel = (x, y) => { const i = (Math.round(y) * 853 + Math.round(x)) * 4; return [datos[i], datos[i+1], datos[i+2]]; };
   OJOS.forEach(ojo => {

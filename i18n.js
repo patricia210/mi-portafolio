@@ -107,7 +107,11 @@ const EN = {
 
   'footer.disenado': 'Designed with creativity and technology',
   'footer.lema': 'SAP SuccessFactors · Integrations · Digital solutions',
-  'footer.arriba': 'Back to top'
+  'footer.arriba': 'Back to top',
+
+  'flotante.arriba': 'Back to top',
+  'flotante.whatsapp': 'Message me on WhatsApp',
+  'flotante.escribeme': "Let's talk?"
 };
 
 // Textos que genera script.js (mensajes, botones y atributos)

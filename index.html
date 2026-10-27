@@ -20,15 +20,52 @@
     <meta property="og:locale" content="es_VE">
     <meta property="og:locale:alternate" content="en_US">
     <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://patricia210.github.io/mi-portafolio/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preload" as="image" href="angela.webp" imagesrcset="angela-480.webp 480w, angela.webp 853w"
+        imagesizes="(max-width: 780px) 86vw, 400px" type="image/webp" fetchpriority="high">
+    <!-- Datos para buscadores (Google). Si cambia el nombre o el cargo, actualízalo también aquí. -->
+    <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Angela",
+      "jobTitle": "Ingeniera de Sistemas",
+      "description": "Ingeniera de Sistemas enfocada en SAP SuccessFactors EC, integraciones SAP CPI, desarrollo web y automatización.",
+      "url": "https://patricia210.github.io/mi-portafolio/",
+      "image": "https://patricia210.github.io/mi-portafolio/angela.jpg",
+      "email": "mailto:patigil951@gmail.com",
+      "telephone": "+584245319486",
+      "knowsAbout": [
+        "SAP SuccessFactors Employee Central",
+        "SAP Integration Suite",
+        "SAP CPI",
+        "OData",
+        "REST",
+        "SOAP",
+        "n8n",
+        "Desarrollo web"
+      ],
+      "knowsLanguage": [
+        "es"
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- La fuente se carga sin bloquear la primera pintura de la página -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="tema-empresarial.css">
 </head>
 
 <body>
+    <script>
+        // Tema antes de mostrar la página (evita un parpadeo): el guardado, o el del sistema del visitante
+        (() => { let t; try { t = localStorage.getItem('portfolio-theme'); } catch {} if ((t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'light') document.body.classList.add('light'); })();
+    </script>
     <div class="scroll-progress" id="progress"></div>
     <div class="aurora" aria-hidden="true"></div>
     <header class="topbar"><a href="#inicio" class="logo" aria-label="Ir al inicio"><span class="logo-mark"><svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
@@ -67,7 +104,9 @@
                 <div class="orbit orbit-two"></div>
                 <div class="photo-halo"></div>
                 <div class="photo-frame">
-                    <img src="angela.webp" alt="Fotografía profesional de Angela" id="portrait">
+                    <img src="angela.webp" srcset="angela-480.webp 480w, angela.webp 853w"
+                        sizes="(max-width: 780px) 86vw, 400px" alt="Fotografía profesional de Angela" id="portrait"
+                        width="853" height="1280" fetchpriority="high" decoding="async">
                     <div class="photo-placeholder" id="photoPlaceholder"><span class="placeholder-icon">✦</span>TU
                         FOTO<small>Agrega angela.webp</small></div>
                 </div>
@@ -111,9 +150,9 @@
                     <p data-i18n="perfil.p2">Este espacio reúne mi perfil, servicios, proyectos y próximos cursos. Aquí
                         podrás conocer lo que hago y conversar sobre nuevas ideas.</p>
                     <div class="about-links"><a href="#contacto" class="inline-link"><span
-                                data-i18n="perfil.conectemos">Conectemos</span> ↗</a><a class="inline-link cv-link"
+                                data-i18n="perfil.conectemos">Conectemos</span> ↗</a><a class="inline-link cv-link" href="#contacto"
                             hidden download><span data-i18n="perfil.cv">Descargar CV</span> ↓</a><a
-                            class="inline-link linkedin-link" hidden target="_blank" rel="noopener noreferrer">LinkedIn
+                            class="inline-link linkedin-link" href="#contacto" hidden target="_blank" rel="noopener noreferrer">LinkedIn
                             ↗</a></div>
                 </div>
                 <div class="about-side">
@@ -299,8 +338,8 @@
                     <p data-i18n="contacto.sub">Cuéntame tu idea, proyecto o consulta profesional. Me encantará
                         conocerla.</p>
                     <div class="contact-actions"><a class="btn btn-ghost wa-link" href="https://wa.me/584245319486">WhatsApp
-                            ↗</a><a class="btn btn-ghost linkedin-link" hidden target="_blank"
-                            rel="noopener noreferrer">LinkedIn ↗</a><a class="btn btn-ghost cv-link" hidden download><span
+                            ↗</a><a class="btn btn-ghost linkedin-link" href="#contacto" hidden target="_blank"
+                            rel="noopener noreferrer">LinkedIn ↗</a><a class="btn btn-ghost cv-link" href="#contacto" hidden download><span
                                 data-i18n="perfil.cv">Descargar CV</span> ↓</a></div>
                 </div>
                 <form class="contact-form" id="contactForm" novalidate>
@@ -333,12 +372,19 @@
                     data-i18n="nav.proyectos">Proyectos</a><a href="#cursos" data-i18n="nav.cursos">Cursos</a><a
                     href="#contacto" data-i18n="nav.contacto">Contacto</a></nav>
             <div class="footer-social"><a class="wa-link" href="https://wa.me/584245319486">WhatsApp ↗</a><a
-                    class="linkedin-link" hidden target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
+                    class="linkedin-link" href="#contacto" hidden target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
         </div>
         <div class="footer-bottom"><span>© <span id="year"></span> AngelaSAP · <span data-i18n="footer.disenado">Diseñado
                     con creatividad y tecnología</span></span><a href="#inicio"><span data-i18n="footer.arriba">Volver
                     arriba</span> ↑</a></div>
     </footer>
+    <!-- Botones flotantes: volver arriba (aparece al bajar) y WhatsApp -->
+    <div class="floating-actions">
+        <a class="float-btn to-top" href="#inicio" data-i18n-aria="flotante.arriba" aria-label="Volver arriba" hidden><svg
+                viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg></a>
+        <a class="float-btn whatsapp wa-link" href="https://wa.me/584245319486" data-i18n-aria="flotante.whatsapp"
+            aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A8 8 0 1 1 8.6 18.6z" /><path d="M9.2 8.6c.2-.5.5-.6.8-.6h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .5-.1.6l-.5.6c-.1.2-.1.4 0 .5.6 1.1 1.5 2 2.6 2.6.2.1.4.1.5 0l.6-.5c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3-.1.6-.6.8-.8.4-1.8.5-2.7.1a9.4 9.4 0 0 1-4.6-4.6c-.4-.9-.3-1.9.1-2.7z" class="wa-fill" /></svg><span class="float-label" data-i18n="flotante.escribeme">¿Hablamos?</span></a>
+    </div>
     <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
