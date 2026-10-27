@@ -104,12 +104,12 @@ form.addEventListener('submit', async e => {
 // MIRADA QUE SIGUE AL CURSOR
 // Coordenadas en píxeles de angela.jpg (853×1280). Si cambias la foto, ajusta estos valores.
 // iris: centro (x, y) y radio r · esquinas: a (exterior/interior) y b · arriba/abajo: control de los párpados
-// sclera: columnas donde se toma el color del blanco del ojo
+// sclera: tramos [desde, hasta] a cada lado del iris donde se toma el color del blanco del ojo
 const OJOS = [
-  { x: 358.8, y: 398.6, r: 12.8, a: [329, 400], b: [389, 404], arriba: 379, abajo: 414, sclera: [338, 379] },
-  { x: 501.9, y: 398, r: 13, a: [470, 403.5], b: [533, 399], arriba: 378.5, abajo: 414, sclera: [482, 522] }
+  { x: 358.8, y: 398.6, r: 12.8, a: [329, 400], b: [389, 404], arriba: 379, abajo: 414, sclera: [[331, 346], [372, 386]] },
+  { x: 501.9, y: 398, r: 13, a: [470, 403.5], b: [533, 399], arriba: 378.5, abajo: 414, sclera: [[475, 490], [516, 529]] }
 ];
-const MAX_X = 7, MAX_Y = 2.8; // desplazamiento máximo del iris (px de la foto)
+const MAX_X = 9, MAX_Y = 3.2; // desplazamiento máximo del iris (px de la foto)
 function iniciarMirada(){
   if (portrait.naturalWidth !== 853 || !matchMedia('(hover:hover) and (pointer:fine)').matches || reducedMotion.matches) return;
   const canvas = document.createElement('canvas');
@@ -122,11 +122,13 @@ function iniciarMirada(){
   let datos; try { datos = bctx.getImageData(0, 0, 853, 1280).data; } catch { canvas.remove(); return; }
   const pixel = (x, y) => { const i = (Math.round(y) * 853 + Math.round(x)) * 4; return [datos[i], datos[i+1], datos[i+2]]; };
   OJOS.forEach(ojo => {
-    // Color del blanco del ojo fila por fila (el más claro de las dos columnas)
+    // Color del blanco del ojo fila por fila: promedio de los píxeles más claros de ambos lados (evita la sombra del párpado)
     ojo.filas = {};
     for (let y = Math.floor(ojo.y - ojo.r); y <= Math.ceil(ojo.y + ojo.r); y++) {
-      const [c1, c2] = ojo.sclera.map(x => pixel(x, y));
-      ojo.filas[y] = (c1[0]+c1[1]+c1[2] > c2[0]+c2[1]+c2[2] ? c1 : c2);
+      const muestras = [];
+      ojo.sclera.forEach(([desde, hasta]) => { for (let x = desde; x <= hasta; x++) muestras.push(pixel(x, y)); });
+      const claros = muestras.sort((p, q) => (q[0]+q[1]+q[2]) - (p[0]+p[1]+p[2])).slice(1, 6);
+      ojo.filas[y] = [0, 1, 2].map(i => Math.round(claros.reduce((s, p) => s + p[i], 0) / claros.length));
     }
     // Iris recortado con borde suave
     const d = Math.ceil(ojo.r * 2 + 6), iris = document.createElement('canvas'); iris.width = iris.height = d;
