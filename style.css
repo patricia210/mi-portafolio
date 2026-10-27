@@ -338,9 +338,7 @@ a:focus-visible {
     overflow: hidden;
     border-radius: 44% 44% 18px 18px;
     border-bottom: 2px solid rgba(157, 143, 255, .4);
-    background: linear-gradient(0deg, rgba(76, 64, 160, .23), transparent 70%);
-    transition: transform .4s cubic-bezier(.2, .8, .2, 1);
-    will-change: transform
+    background: linear-gradient(0deg, rgba(76, 64, 160, .23), transparent 70%)
 }
 
 .photo-frame img {
@@ -349,6 +347,16 @@ a:focus-visible {
     object-fit: contain;
     object-position: bottom;
     display: none
+}
+
+.portrait-eyes {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+    pointer-events: none
 }
 
 .photo-placeholder {
