@@ -1,4 +1,4 @@
-PORTAFOLIO PROFESIONAL 2026 · AngelaSAP
+PORTAFOLIO PROFESIONAL 2026 · Code and SAP
 
 Para verlo en tu computadora con todas las funciones (incluidos los ojos que siguen al cursor):
   python3 -m http.server 8765
@@ -17,6 +17,8 @@ OTROS ARCHIVOS:
 - angela.webp y angela-480.webp: la foto del inicio sin fondo (grande y para móvil).
   angela.jpg es la original y se usa para la vista previa al compartir.
   Si cambias la foto, ajusta las coordenadas de OJOS en script.js.
+- logo-barra.webp (barra superior, sin lema), logo.webp y logo-oscuro.webp (pie de página, temas claro y oscuro),
+  favicon.png y apple-touch-icon.png: el logo Code and SAP.
 - i18n.js: textos en inglés. Si cambias un texto en index.html, actualiza también su traducción.
 - tema-empresarial.css: el diseño corporativo. Si lo quitas de index.html vuelve el diseño original.
 - index.html: en la sección Proyectos hay una plantilla comentada (reto / solución / resultado)

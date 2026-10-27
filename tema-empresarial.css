@@ -1124,3 +1124,42 @@ body.light .float-card {
         min-width: 50px
     }
 }
+
+/* Logo Code and SAP */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    height: 64px
+}
+
+.brand-logo img {
+    height: 50px;
+    width: auto;
+    display: block
+}
+
+.footer-logo img {
+    height: 96px;
+    width: auto;
+    display: block
+}
+
+.footer-logo .logo-oscuro,
+body.light .footer-logo .logo-claro {
+    display: block
+}
+
+.footer-logo .logo-claro,
+body.light .footer-logo .logo-oscuro {
+    display: none
+}
+
+@media(max-width:780px) {
+    .brand-logo {
+        height: 60px
+    }
+
+    .brand-logo img {
+        height: 44px
+    }
+}
