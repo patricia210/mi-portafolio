@@ -35,7 +35,7 @@ const EN = {
 
   'perfil.indice': '01 / PROFILE',
   'perfil.titulo': 'More than code, <span class="gradient-text">solutions with purpose.</span>',
-  'perfil.hola': "HI, I'M A",
+  'perfil.hola': "HI, I'M",
   'perfil.cargo': 'Systems Engineer',
   'perfil.p1': "I'm passionate about connecting people, processes and technology. I'm building my expertise in SAP SuccessFactors Employee Central and integrations with SAP Integration Suite (CPI), and I explore web solutions and automation for businesses.",
   'perfil.p2': 'This space brings together my profile, services, projects and upcoming courses. Here you can learn what I do and talk about new ideas.',
@@ -106,6 +106,7 @@ const EN = {
   'form.enviar': 'Send message',
 
   'footer.disenado': 'Designed with creativity and technology',
+  'footer.lema': 'SAP SuccessFactors · Integrations · Digital solutions',
   'footer.arriba': 'Back to top'
 };
 

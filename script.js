@@ -44,7 +44,7 @@ techTrack.addEventListener('click', e => {
 });
 const portrait=$('#portrait'),placeholder=$('#photoPlaceholder');portrait.addEventListener('load',()=>{portrait.style.display='block';placeholder.style.display='none';});portrait.addEventListener('error',()=>{portrait.style.display='none';placeholder.style.display='flex';});if(portrait.complete&&portrait.naturalWidth){portrait.style.display='block';placeholder.style.display='none';}
 $('#year').textContent=new Date().getFullYear();
-const wa=$('#waLink');if(CONTACTO.whatsapp){wa.target='_blank';wa.rel='noopener noreferrer';}else wa.hidden=true;
+const waLinks=document.querySelectorAll('.wa-link');waLinks.forEach(wa=>{if(CONTACTO.whatsapp){wa.target='_blank';wa.rel='noopener noreferrer';}else wa.hidden=true;});
 document.querySelectorAll('.linkedin-link').forEach(a=>{if(CONTACTO.linkedin){a.href=CONTACTO.linkedin;a.hidden=false;}});
 document.querySelectorAll('.cv-link').forEach(a=>{if(CONTACTO.cv){a.href=CONTACTO.cv;a.hidden=false;}});
 
@@ -73,7 +73,7 @@ function aplicarIdioma(){
   document.documentElement.lang = lang;
   document.title = t('titulo');
   langBtn.textContent = t('idioma'); langBtn.title = t('idiomaTitle'); langBtn.setAttribute('aria-label', t('idiomaLabel'));
-  if (CONTACTO.whatsapp) wa.href = `https://wa.me/${CONTACTO.whatsapp}?text=${encodeURIComponent(t('whatsapp'))}`;
+  if (CONTACTO.whatsapp) waLinks.forEach(wa => { wa.href = `https://wa.me/${CONTACTO.whatsapp}?text=${encodeURIComponent(t('whatsapp'))}`; });
   renderCertificaciones();
   $('#formStatus').textContent = '';
 }

@@ -14,7 +14,8 @@ QUÉ EDITAR (todo está al inicio de script.js):
    La sección aparece sola cuando hay al menos una.
 
 OTROS ARCHIVOS:
-- angela.jpg: la foto del inicio. Si la cambias, ajusta las coordenadas de OJOS en script.js.
+- angela.webp: la foto del inicio sin fondo (angela.jpg es la original y se usa para la vista previa al compartir).
+  Si cambias la foto, ajusta las coordenadas de OJOS en script.js.
 - i18n.js: textos en inglés. Si cambias un texto en index.html, actualiza también su traducción.
 - tema-empresarial.css: el diseño corporativo. Si lo quitas de index.html vuelve el diseño original.
 - index.html: en la sección Proyectos hay una plantilla comentada (reto / solución / resultado)
